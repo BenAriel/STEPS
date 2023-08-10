@@ -1,125 +1,113 @@
-import java.time.LocalDate;
+public class Questoes {
+    private int codigo;
+    private String disciplina;
+    private String enunciado;
+    private String gabarito;
+    private String assunto;
+    private NivelDeDificuldade nivelDeDificuldade;
 
-public class Provas {
-	private String disciplina;
-	private String questoes;
-	private int numeroDeQuestoes;
-	private LocalDate data;
-	private int questoesFaceis;
-	private int questoesMedias;
-	private int questoesDificeis;
-	
-    public Provas(String disciplina, String questoes, int numeroDeQuestoes, int questoesFaceis, int questoesMedias, int questoesDificeis) {
+    public enum NivelDeDificuldade {
+        FACIL,
+        MEDIO,
+        DIFICIL
+    }
+
+    public Questoes() { // construtor default
+    }
+
+    //construtor principal
+    public Questoes(int codigo, String disciplina, String enunciado, String gabarito, String assunto, int nivelDeDificuldade) {
+        setCodigo(codigo);
         setDisciplina(disciplina);
-        setQuestoes(questoes);
-        setNumeroDeQuestoes(numeroDeQuestoes);
-        setQuestoesFaceis(questoesFaceis);
-        setQuestoesMedias(questoesMedias);
-        setQuestoesDificeis(questoesDificeis);
-        setData(LocalDate.now()); 
+        setEnunciado(enunciado);
+        setGabarito(gabarito);
+        setAssunto(assunto);
+        setNivelDeDificuldade(nivelDeDificuldade);
     }
-		
-    public void gerarProvas(int numeroDeQuestoes,int questoesFaceis, int questoesMedias, int questoesDificeis) {
-	setNumeroDeQuestoes(numeroDeQuestoes);
-	setQuestoesFaceis(questoesFaceis);
-	setQuestoesMedias(questoesMedias);
-	setQuestoesDificeis(questoesDificeis);  
-	setData(LocalDate.now()); // coloca a data do momento da criação como data da prova
-   }
-	
+
+    //métodos set e get dos atributos
+    public void setCodigo(int x) {
+        if (x < 0) {
+            System.out.println("Não existe código negativo");
+        } else {
+            this.codigo = x;
+        }
+    }
+
+    public int getCodigo() {
+        return this.codigo;
+    }
+
+    public void setDisciplina(String x) {
+        if (x != null) {
+            this.disciplina = x;
+        } else {
+            System.out.println("Disciplina não pode ser vazia!");
+        }
+    }
+
     public String getDisciplina() {
-    	
-        return disciplina;
+        return this.disciplina;
     }
 
-    public void setDisciplina(String disciplina) {
-    	if(disciplina != null) {
-			this.disciplina = disciplina;
-		}
-		else
-		{
-			System.out.println("Disciplina não pode ser vazia!");
-		}
+    public void setEnunciado(String x) {
+        if (x != null) {
+            this.enunciado = x;
+        } else {
+            System.out.println("Enunciado não pode ser vazio!");
+        }
     }
 
-    public String getQuestoes() {
-        return questoes;
+    public String getEnunciado() {
+        return this.enunciado;
     }
 
-    public void setQuestoes(String questoes) {
-    	if(questoes != null) {
-			this.questoes = questoes;
-		}
-		else
-		{
-			System.out.println("Questoes não pode ser vazia!");
-		}
+    public void setGabarito(String x) {
+        if (x != null) {
+            this.gabarito = x;
+        } else {
+            System.out.println("Gabarito não pode ser vazio!");
+        }
     }
 
-    public int getNumeroDeQuestoes() {
-        return numeroDeQuestoes;
+    public String getGabarito() {
+        return this.gabarito;
     }
 
-    public void setNumeroDeQuestoes(int numeroDeQuestoes) {
-    	if(numeroDeQuestoes < 1 ) {
-			System.out.println("Numero de questoes não pode ser negativo ou zero!");
-		}
-		else
-		{
-			this.numeroDeQuestoes = numeroDeQuestoes;
-		}
+    public void setAssunto(String x) {
+        if (x != null) {
+            this.assunto = x;
+        } else {
+            System.out.println("Assunto não pode ser vazio!");
+        }
     }
 
-    public void setData(LocalDate data) {
-    	if(data != null ) {
-			this.data = data;
-		}
-		else
-		{
-			System.out.println("A data não pode ser vazio");
-		}
+    public String getAssunto() {
+        return this.assunto;
     }
 
-    public int getQuestoesFaceis() {
-        return questoesFaceis;
+    public NivelDeDificuldade getNivel() {
+        return this.nivelDeDificuldade;
     }
 
-    public void setQuestoesFaceis(int questoesFaceis) {
-    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			System.out.println(" número de questões FACEIS ultrapassa o limite de: " + numeroDeQuestoes);
-		}
-		else
-		{
-			this.questoesFaceis = questoesFaceis;
-		}
+    public void setNivelDeDificuldade(int nivel) {
+        if (nivel < 1 || nivel > 3)
+        {
+            System.out.println("Valor inválido, nível vai de 1 até 3!");
+        }
+        else
+        {
+            if(nivel == 1){
+                this.nivelDeDificuldade = nivelDeDificuldade.FACIL;
+            }
+            if(nivel == 2){
+                this.nivelDeDificuldade = nivelDeDificuldade.MEDIO;
+            }
+            if(nivel == 3){
+                this.nivelDeDificuldade = nivelDeDificuldade.DIFICIL;
+            }
+        
+        }    
+            
     }
-
-    public int getQuestoesMedias() {
-        return questoesMedias;
-    }
-
-    public void setQuestoesMedias(int questoesMedias) {
-    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			System.out.println("O número de questões MEDIAS ultrapassa o limite de: " + numeroDeQuestoes);
-		}
-		else
-		{
-			this.questoesMedias = questoesMedias;
-		}
-    }
-
-    public int getQuestoesDificeis() {
-        return questoesDificeis;
-    }
-
-    public void setQuestoesDificeis(int questoesDificeis) {
-    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			System.out.println("O número de questões DIFICEIS ultrapassa o limite de: " + numeroDeQuestoes);
-		}
-		else
-		{
-			this.questoesDificeis = questoesDificeis;
-		}
-    }
-    
 }
