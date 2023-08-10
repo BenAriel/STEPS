@@ -1,4 +1,3 @@
-package steps;
 import java.time.LocalDate;
 
 public class Provas {
@@ -10,7 +9,7 @@ public class Provas {
 	private int questoesMedias;
 	private int questoesDificeis;
 	
-    public Provas(String disciplina, String questoes, int numeroDeQuestoes, LocalDate data, int questoesFaceis, int questoesMedias, int questoesDificeis) {
+    public Provas(String disciplina, String questoes, int numeroDeQuestoes, int questoesFaceis, int questoesMedias, int questoesDificeis) {
         setDisciplina(disciplina);
         setQuestoes(questoes);
         setNumeroDeQuestoes(numeroDeQuestoes);
@@ -63,11 +62,11 @@ public class Provas {
 
     public void setNumeroDeQuestoes(int numeroDeQuestoes) {
     	if(numeroDeQuestoes < 1 ) {
-			this.numeroDeQuestoes = numeroDeQuestoes;
+			System.out.println("Numero de questoes não pode ser negativo ou zero!");
 		}
 		else
 		{
-			System.out.println("Numero de questoes não pode ser negativo ou zero!");
+			this.numeroDeQuestoes = numeroDeQuestoes;
 		}
     }
 
@@ -87,11 +86,11 @@ public class Provas {
 
     public void setQuestoesFaceis(int questoesFaceis) {
     	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			this.questoesFaceis = questoesFaceis;
+			System.out.println(" número de questões FACEIS ultrapassa o limite de: " + numeroDeQuestoes);
 		}
 		else
 		{
-			System.out.println(" número de questões FACEIS ultrapassa o limite de: \" + numeroDeQuestoes");
+			this.questoesFaceis = questoesFaceis;
 		}
     }
 
@@ -101,11 +100,11 @@ public class Provas {
 
     public void setQuestoesMedias(int questoesMedias) {
     	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			this.questoesMedias = questoesMedias;
+			System.out.println("O número de questões MEDIAS ultrapassa o limite de: " + numeroDeQuestoes);
 		}
 		else
 		{
-			System.out.println("O número de questões MEDIAS ultrapassa o limite de: " + numeroDeQuestoes);
+			this.questoesMedias = questoesMedias;
 		}
     }
 
@@ -115,11 +114,10 @@ public class Provas {
 
     public void setQuestoesDificeis(int questoesDificeis) {
     	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
-			this.questoesDificeis = questoesDificeis;
+			System.out.println("O número de questões DIFICEIS ultrapassa o limite de: " + numeroDeQuestoes);
 		}
 		else
 		{
-			System.out.println("O número de questões DIFICEIS ultrapassa o limite de: " + numeroDeQuestoes);
+			this.questoesDificeis = questoesDificeis;
 		}
     }
-}
