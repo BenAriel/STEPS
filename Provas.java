@@ -11,29 +11,36 @@ public class Provas {
 	private int questoesDificeis;
 	
     public Provas(String disciplina, String questoes, int numeroDeQuestoes, LocalDate data, int questoesFaceis, int questoesMedias, int questoesDificeis) {
-        this.disciplina = disciplina;
-        this.questoes = questoes;
-        this.numeroDeQuestoes = numeroDeQuestoes;
-        this.data = data;
-        this.questoesFaceis = questoesFaceis;
-        this.questoesMedias = questoesMedias;
-        this.questoesDificeis = questoesDificeis;
+        setDisciplina(disciplina);
+        setQuestoes(questoes);
+        setNumeroDeQuestoes(numeroDeQuestoes);
+        setQuestoesFaceis(questoesFaceis);
+        setQuestoesMedias(questoesMedias);
+        setQuestoesDificeis(questoesDificeis);
+        setData(LocalDate.now()); 
     }
 		
-	public void gerarProvas(int numQuestoesFaceis, int numQuestoesMedias, int numQuestoesDificeis) {
-	    this.questoesFaceis = numQuestoesFaceis;
-	    this.questoesMedias = numQuestoesMedias;
-	    this.questoesDificeis = numQuestoesDificeis;  
-	    this.numeroDeQuestoes = numQuestoesFaceis + numQuestoesMedias + numQuestoesDificeis;
-	    this.data = LocalDate.now(); //coloca a data do momento da criação como data da prova
-	}
+    public void gerarProvas(int numeroDeQuestoes,int questoesFaceis, int questoesMedias, int questoesDificeis) {
+	setNumeroDeQuestoes(numeroDeQuestoes);
+	setQuestoesFaceis(questoesFaceis);
+	setQuestoesMedias(questoesMedias);
+	setQuestoesDificeis(questoesDificeis);  
+	setData(LocalDate.now()); // coloca a data do momento da criação como data da prova
+   }
 	
     public String getDisciplina() {
+    	
         return disciplina;
     }
 
     public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
+    	if(disciplina != null) {
+			this.disciplina = disciplina;
+		}
+		else
+		{
+			System.out.println("Disciplina não pode ser vazia!");
+		}
     }
 
     public String getQuestoes() {
@@ -41,7 +48,13 @@ public class Provas {
     }
 
     public void setQuestoes(String questoes) {
-        this.questoes = questoes;
+    	if(questoes != null) {
+			this.questoes = questoes;
+		}
+		else
+		{
+			System.out.println("Questoes não pode ser vazia!");
+		}
     }
 
     public int getNumeroDeQuestoes() {
@@ -49,15 +62,23 @@ public class Provas {
     }
 
     public void setNumeroDeQuestoes(int numeroDeQuestoes) {
-        this.numeroDeQuestoes = numeroDeQuestoes;
-    }
-
-    public LocalDate getData() {
-        return data;
+    	if(numeroDeQuestoes < 1 ) {
+			this.numeroDeQuestoes = numeroDeQuestoes;
+		}
+		else
+		{
+			System.out.println("Numero de questoes não pode ser negativo ou zero!");
+		}
     }
 
     public void setData(LocalDate data) {
-        this.data = data;
+    	if(data != null ) {
+			this.data = data;
+		}
+		else
+		{
+			System.out.println("A data não pode ser vazio");
+		}
     }
 
     public int getQuestoesFaceis() {
@@ -65,7 +86,13 @@ public class Provas {
     }
 
     public void setQuestoesFaceis(int questoesFaceis) {
-        this.questoesFaceis = questoesFaceis;
+    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
+			this.questoesFaceis = questoesFaceis;
+		}
+		else
+		{
+			System.out.println(" número de questões FACEIS ultrapassa o limite de: \" + numeroDeQuestoes");
+		}
     }
 
     public int getQuestoesMedias() {
@@ -73,7 +100,13 @@ public class Provas {
     }
 
     public void setQuestoesMedias(int questoesMedias) {
-        this.questoesMedias = questoesMedias;
+    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
+			this.questoesMedias = questoesMedias;
+		}
+		else
+		{
+			System.out.println("O número de questões MEDIAS ultrapassa o limite de: " + numeroDeQuestoes);
+		}
     }
 
     public int getQuestoesDificeis() {
@@ -81,7 +114,12 @@ public class Provas {
     }
 
     public void setQuestoesDificeis(int questoesDificeis) {
-        this.questoesDificeis = questoesDificeis;
+    	if(questoesFaceis + questoesMedias + questoesDificeis > numeroDeQuestoes) {
+			this.questoesDificeis = questoesDificeis;
+		}
+		else
+		{
+			System.out.println("O número de questões DIFICEIS ultrapassa o limite de: " + numeroDeQuestoes);
+		}
     }
-	
 }
