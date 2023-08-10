@@ -139,12 +139,4 @@ public class Prova {
             this.questoesDificeis = questoesDificeis;
         }
     }
-    public static void main(String[] args){
-        Prova prova = new Prova("Calculo","Quanto é 2 + 2?",10,30,0,0 );
-        System.out.println(prova.getDisciplina());
-        System.out.println(prova.getQuestoes());
-        System.out.println(prova.getNumeroDeQuestoes());
-        System.out.println(prova.getQuestoesFaceis());
-        System.out.println(prova.getQuestoesMedias());
-    }
 }
