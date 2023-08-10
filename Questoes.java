@@ -1,4 +1,4 @@
-public class Questoes {
+public class Questao {
     private int codigo;
     private String disciplina;
     private String enunciado;
@@ -12,11 +12,11 @@ public class Questoes {
         DIFICIL
     }
 
-    public Questoes() { // construtor default
+    public Questao() { // construtor default
     }
 
     //construtor principal
-    public Questoes(int codigo, String disciplina, String enunciado, String gabarito, String assunto, NivelDeDificuldade nivelDeDificuldade) {
+    public Questao(int codigo, String disciplina, String enunciado, String gabarito, String assunto, int nivelDeDificuldade) {
         setCodigo(codigo);
         setDisciplina(disciplina);
         setEnunciado(enunciado);
@@ -26,11 +26,12 @@ public class Questoes {
     }
 
     //métodos set e get dos atributos
-    public void setCodigo(int x) {
-        if (x < 0) {
+    public void setCodigo(int codigo) {
+        if (codigo < 0) {
             System.out.println("Não existe código negativo");
+            System.exit(1); //em caso de erro, sai do programa
         } else {
-            this.codigo = x;
+            this.codigo = codigo;
         }
     }
 
@@ -38,11 +39,12 @@ public class Questoes {
         return this.codigo;
     }
 
-    public void setDisciplina(String x) {
-        if (x != null) {
-            this.disciplina = x;
+    public void setDisciplina(String disciplina) {
+        if (disciplina != null) {
+            this.disciplina = disciplina;
         } else {
             System.out.println("Disciplina não pode ser vazia!");
+            System.exit(1); //em caso de erro, sai do programa
         }
     }
 
@@ -50,11 +52,12 @@ public class Questoes {
         return this.disciplina;
     }
 
-    public void setEnunciado(String x) {
-        if (x != null) {
-            this.enunciado = x;
+    public void setEnunciado(String enunciado) {
+        if (enunciado != null) {
+            this.enunciado = enunciado;
         } else {
             System.out.println("Enunciado não pode ser vazio!");
+            System.exit(1); //em caso de erro, sai do programa
         }
     }
 
@@ -62,11 +65,12 @@ public class Questoes {
         return this.enunciado;
     }
 
-    public void setGabarito(String x) {
-        if (x != null) {
-            this.gabarito = x;
+    public void setGabarito(String gabarito) {
+        if (gabarito != null) {
+            this.gabarito = gabarito;
         } else {
             System.out.println("Gabarito não pode ser vazio!");
+            System.exit(1); //em caso de erro, sai do programa
         }
     }
 
@@ -74,11 +78,12 @@ public class Questoes {
         return this.gabarito;
     }
 
-    public void setAssunto(String x) {
-        if (x != null) {
-            this.assunto = x;
+    public void setAssunto(String assunto) {
+        if (assunto != null) {
+            this.assunto = assunto;
         } else {
             System.out.println("Assunto não pode ser vazio!");
+            System.exit(1); //em caso de erro, sai do programa
         }
     }
 
@@ -90,9 +95,24 @@ public class Questoes {
         return this.nivelDeDificuldade;
     }
 
-    public void setNivelDeDificuldade(NivelDeDificuldade nivel) {
-        this.nivelDeDificuldade = nivel;
+    public void setNivelDeDificuldade(int nivel) {
+        if (nivel < 1 || nivel > 3)
+        {
+            System.out.println("Valor inválido, nível vai de 1 até 3!");
+        }
+        else
+        {
+            if(nivel == 1){
+                this.nivelDeDificuldade = nivelDeDificuldade.FACIL;
+            }
+            if(nivel == 2){
+                this.nivelDeDificuldade = nivelDeDificuldade.MEDIO;
+            }
+            if(nivel == 3){
+                this.nivelDeDificuldade = nivelDeDificuldade.DIFICIL;
+            }
+        
+        }    
+            
     }
-
-
 }
