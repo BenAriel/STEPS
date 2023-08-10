@@ -15,6 +15,7 @@ public class Questoes {
     public Questoes() { // construtor default
     }
 
+    //construtor principal
     public Questoes(int codigo, String disciplina, String enunciado, String gabarito, String assunto, NivelDeDificuldade nivelDeDificuldade) {
         setCodigo(codigo);
         setDisciplina(disciplina);
@@ -24,6 +25,7 @@ public class Questoes {
         setNivelDeDificuldade(nivelDeDificuldade);
     }
 
+    //métodos set e get dos atributos
     public void setCodigo(int x) {
         if (x < 0) {
             System.out.println("Não existe código negativo");
