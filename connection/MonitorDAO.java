@@ -1,10 +1,10 @@
 package connection;
 
-//import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import entities.Monitor;
+
 
 public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 		
@@ -20,15 +20,6 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 			e.printStackTrace();
 		}
 	}
-
-	
-	@Override
-	public void listar(Monitor objeto) {
-		// TODO Auto-generated method stub
-		super.listar(objeto);
-	}
-
-
 
 	@Override
 	public void buscar(Monitor objeto) {
@@ -61,6 +52,13 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+	}
+
+
+	@Override
+	public void listar() {
+		// TODO Auto-generated method stub
 		
 	}
 }
