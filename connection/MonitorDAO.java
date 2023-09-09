@@ -24,7 +24,6 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 	@Override
 	public void buscar(Monitor objeto) {
 		// TODO Auto-generated method stub
-		super.buscar(objeto);
 	}
 
 
@@ -32,7 +31,6 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 	@Override
 	public void alterar(Monitor objeto) {
 		// TODO Auto-generated method stub
-		super.alterar(objeto);
 	}
 
 
