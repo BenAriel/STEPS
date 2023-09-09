@@ -1,31 +1,33 @@
+package entities;
 
-import java.time.LocalDate;
 
 public class Prova {
 	private String disciplina;
 	private String questoes;
 	private int numeroDeQuestoes;
-	private LocalDate data;
+	private String data;
 	private int questoesFaceis;
 	private int questoesMedias;
 	private int questoesDificeis;
+    private int codigo;
 	
-    public Prova(String disciplina, String questoes, int numeroDeQuestoes, int questoesFaceis, int questoesMedias, int questoesDificeis) {
+    public Prova(String disciplina,int codigo, String questoes, int numeroDeQuestoes, int questoesFaceis, int questoesMedias, int questoesDificeis,String data) {
         setDisciplina(disciplina);
+        setCodigo(codigo);
         setQuestoes(questoes);
         setNumeroDeQuestoes(numeroDeQuestoes);
         setQuestoesFaceis(questoesFaceis);
         setQuestoesMedias(questoesMedias);
         setQuestoesDificeis(questoesDificeis);
-        setData(LocalDate.now()); 
+        setData(data);
     }
 		
-	public void gerarProvas(int numeroDeQuestoes,int questoesFaceis, int questoesMedias, int questoesDificeis) {
+	public void gerarProvas(int numeroDeQuestoes,int questoesFaceis, int questoesMedias, int questoesDificeis,String data) {
 	    setNumeroDeQuestoes(numeroDeQuestoes);
 		setQuestoesFaceis(questoesFaceis);
 	    setQuestoesMedias(questoesMedias);
 	    setQuestoesDificeis(questoesDificeis);  
-	    setData(LocalDate.now()); // coloca a data do momento da criação como data da prova
+	    setData(data); // coloca a data do momento da criação como data da prova
 	}
 	
     public String getDisciplina() {
@@ -56,6 +58,13 @@ public class Prova {
 			System.out.println("Questoes não pode ser vazia!");
 		}
     }
+    public int getCodigo() {
+        return codigo;
+    }
+    public void setCodigo(int codigo) {
+        if(codigo!=0)
+        this.codigo = codigo;
+    }
 
     public int getNumeroDeQuestoes() {
         return numeroDeQuestoes;
@@ -70,9 +79,11 @@ public class Prova {
 		{
 			this.numeroDeQuestoes = numeroDeQuestoes;
 		}
+    }   public String getData() {
+        return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(String data) {
     	if(data != null ) {
 			this.data = data;
 		}
