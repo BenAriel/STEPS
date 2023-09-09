@@ -1,8 +1,9 @@
 package connection;
-
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public abstract class BaseDAO_IMP<E> implements BaseDAO<E> {
 	private String url;
