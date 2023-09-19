@@ -5,21 +5,26 @@ public class Monitor {
     private String nome; 
     private String login;
     private String senha;
-    private int matricula;
-    final boolean NiveldeAcesso=false; //o nivel de acesso do monitor é sempre negado(false).
+    private String matricula;
+   
 
     public Monitor(){};
 
-    public Monitor (String Name,String Log,String Pass,int mat)
+    public Monitor (String Name,String Log,String Pass,String Mat)
     {
         setNomeMonitor(Name);
         setLogin(Log);
         setSenha(Pass);
-        setMatricula(mat);
+        setMatricula(Mat);
     }
-    //métodos get e sets.
+    @Override
+	public String toString() {
+		return "Monitor [nome=" + nome + ", login=" + login + ", senha=" + senha + ", matricula=" + matricula + "]";
+	}
+
+	//métodos get e sets.
     public String getNomeMonitor() {
-        return nome;
+        return this.nome;
     }
     public void setNomeMonitor(String Name)
     {
@@ -28,17 +33,17 @@ public class Monitor {
         else
         System.out.println("digite um nome válido");
     }
-     public int getMatricula() {
+     public String getMatricula() {
         return matricula;
     }
-    public void setMatricula(int Mat)
+    public void setMatricula(String Mat)
     {
-        int a = (int)(Math.log10(Mat)+1);//verifica se tem 10 digitos.
-        System.out.println(a);
-         if( Mat !=0  &&  a != 10 )
-        this.matricula=Mat;
-        else
-        System.out.println("digite um nome válido");
+        int contador = Mat.length();
+        if (contador == 10) {
+        	this.matricula = Mat;
+        } else {
+        	System.out.println("digite um nome válido");
+        }
     }
 
 
