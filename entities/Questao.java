@@ -6,36 +6,44 @@ public class Questao {
     private String enunciado;
     private String gabarito;
     private String assunto;
-    private NivelDeDificuldade nivelDeDificuldade;
+    private int nivelDeDificuldade;
 
-    public enum NivelDeDificuldade {
-        FACIL,
-        MEDIO,
-        DIFICIL
-    }
 
     public Questao() { // construtor default
     }
 
-    //construtor principal
-    public Questao(int codigo, String disciplina, String enunciado, String gabarito, String assunto, int nivelDeDificuldade) {
-        setCodigo(codigo);
+    //construtor principal usado para inserir
+    public Questao(String disciplina, String enunciado, String gabarito, String assunto, int nivelDeDificuldade) {
+    	//sempre vai começar a questão como null, o banco de dados é quem vai organizar
         setDisciplina(disciplina);
         setEnunciado(enunciado);
         setGabarito(gabarito);
         setAssunto(assunto);
         setNivelDeDificuldade(nivelDeDificuldade);
     }
+    //construtor usado para fazer alterações de dados
+    public Questao(int codigo, String disciplina, String enunciado, String gabarito, String assunto, int nivelDeDificuldade) {
+    	//sempre vai começar a questão como null, o banco de dados é quem vai organizar
+    	setCodigo(codigo);
+        setDisciplina(disciplina);
+        setEnunciado(enunciado);
+        setGabarito(gabarito);
+        setAssunto(assunto);
+        setNivelDeDificuldade(nivelDeDificuldade);
+    }
+    //construtor usado para fazer buscas apenas por código no BD
+    public Questao(int codigo) {
+    	setCodigo(codigo);
+    }
 
     //métodos set e get dos atributos
     public void setCodigo(int codigo) {
-        if (codigo < 0) {
-            System.out.println("Não existe código negativo");
-            System.exit(1); //em caso de erro, sai do programa
-        } else {
-            this.codigo = codigo;
+    	if (codigo > 0) {
+    	this.codigo = codigo;
+    	} else {
+    		System.out.println("O código precisa ser maior ou igual a zero, também precisa ser um numero inteiro!");
+    	}
         }
-    }
 
     public int getCodigo() {
         return this.codigo;
@@ -93,28 +101,26 @@ public class Questao {
         return this.assunto;
     }
 
-    public NivelDeDificuldade getNivel() {
+    public int getNivelDeDificuldade() {
         return this.nivelDeDificuldade;
     }
 
-    public void setNivelDeDificuldade(int nivel) {
+    @Override
+	public String toString() {
+		return "Questao [codigo=" + codigo + ", disciplina=" + disciplina + ", enunciado=" + enunciado + ", gabarito="
+				+ gabarito + ", assunto=" + assunto + ", nivelDeDificuldade=" + nivelDeDificuldade + "]";
+	}
+
+	public void setNivelDeDificuldade(int nivel) {
         if (nivel < 1 || nivel > 3)
         {
             System.out.println("Valor inválido, nível vai de 1 até 3!");
         }
         else
         {
-            if(nivel == 1){
-                this.nivelDeDificuldade = nivelDeDificuldade.FACIL;
-            }
-            if(nivel == 2){
-                this.nivelDeDificuldade = nivelDeDificuldade.MEDIO;
-            }
-            if(nivel == 3){
-                this.nivelDeDificuldade = nivelDeDificuldade.DIFICIL;
-            }
-        
+           this.nivelDeDificuldade = nivel;        
         }    
             
     }
+
 }
