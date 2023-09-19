@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entities.Monitor;
 import entities.Prova;
 import entities.Questao;
+import entities.Disciplina;
 
 public class Principal {
 
@@ -115,10 +116,47 @@ public class Principal {
 		//daoProva.remover(p1);
 		
 		//
+		//----------------------------------------------------------------//
+			//teste disciplina
 		
-				
 		
+		//DisciplinaDAO discDAO = new DisciplinaDAO();
+		//Disciplina D = new Disciplina("historia", "estuda a historia");
+		//discDAO.inserir(D);
+	
+		//------------------teste inserir prova e questao---------- 
+		//DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		//QuestaoDAO dao1 = new QuestaoDAO();
+		//ArrayList<Questao> questoes = new ArrayList<>(); 
+		//questoes = dao1.listar();
+		//Disciplina d  = new Disciplina(2);
+		//disciplinaDAO.inserir(d,questoes,"n");
+
+		//ProvaDAO pdao = new ProvaDAO();
+		//ArrayList<Prova> provas = new ArrayList<>(); 
+		//provas = pdao.listar();
+		//disciplinaDAO.inserir(d,provas);
 		
+		//buscar:
+		//DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		//Disciplina d = new Disciplina(2);
+		//d = disciplinaDAO.buscar(d);
+		//System.out.println(d.toString());
+		
+		//listar:
+		//DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		//ArrayList<Disciplina> disciplinas = new ArrayList<>();
+		//disciplinas = disciplinaDAO.listar();
+		
+		//alterar:
+		//DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		//Disciplina d = new Disciplina( "geografia","descrição é isso m");
+		//disciplinaDAO.alterar(d);		
+		
+		//remover:
+		//DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		//disciplina d = new Disciplina(2);
+		//disciplinaDAO.remover(p1);
 
 	}
 }
