@@ -1,21 +1,63 @@
+package entities;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Disciplina {
     private String nome;
+    private List<Questao> questaoList = new ArrayList<>();
+    private List<Prova> provalist = new ArrayList<>();
     private int codigo;
     private String descricao;
 
-    //construtor para inicializar a discilina
+    //construtor para inicializar a disciplina
     public Disciplina(){};
-    public Disciplina(String name,int codigo,String discri)
+    public Disciplina(String name,String discri)
     {
         setNome(name);
-        setCodigo(codigo);
         setDescricao(discri);
     }
+
+    public Disciplina(String name,List <Questao> questoes,List<Prova> provas,String discri)
+    {
+        setNome(name);
+        setQuestoes(questoes);
+        setProvas(provas);
+        setDescricao(discri);
+    }
+    public Disciplina(int codigo) {
+        this.codigo = codigo;
+    }
+
      //métodos gets e sets
     public String getNome ()
     {
         return nome;
     }
+    public void setQuestoes(List<Questao> questaoList) {
+        if (questaoList != null) {
+            this.questaoList = questaoList;
+        } else {
+            System.out.println("Valor inválido para a lista de questões");
+        }
+    }
+
+    public List<Questao> getQuestoes()
+    {
+        return this.questaoList;
+    } 
+
+    public void setProvas(List<Prova> provalist) {
+        if (provalist != null) {
+            this.provalist = provalist;
+        } else {
+            System.out.println("Valor inválido para a lista de questões");
+        }
+    }
+    public List<Prova> getprovas()
+    {
+        return this.provalist;
+    } 
 
     public void setNome(String name)
     {
