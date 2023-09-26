@@ -2,6 +2,20 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.base.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.media.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.web.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx-swt.jar",
+        "c:\\Users\\Cliente\\Desktop\\postgresql-42.6.0.jar",
+        "c:\\Users\\Cliente\\Downloads\\dom4j-2.1.4.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-3.17.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-ooxml-3.17.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-ooxml-schemas-3.17.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\ooxml-lib\\xmlbeans-2.6.0.jar"
     ]
 }

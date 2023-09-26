@@ -13,7 +13,7 @@ public class TelasTeste extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
-			 Parent root = FXMLLoader.load(getClass().getResource("TelaProvas.fxml"));
+			 Parent root = FXMLLoader.load(getClass().getResource("TelaNovaDisciplina.fxml"));
 			Scene cena = new Scene(root);
 			primaryStage.setTitle("Sistema de Geração de Provas(STEPS) ");
 			primaryStage.setScene(cena);

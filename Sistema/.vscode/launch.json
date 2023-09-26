@@ -1,0 +1,37 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Testedoubleclick",
+            "request": "launch",
+            "mainClass": "view.Testedoubleclick",
+            "projectName": "Sistema_78961c27",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "view.Teste",
+            "projectName": "Sistema_78961c27"
+        },
+        {
+            "type": "java",
+            "name": "TelasTeste",
+            "request": "launch",
+            "mainClass": "view.TelasTeste",
+            "projectName": "Sistema_78961c27",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}

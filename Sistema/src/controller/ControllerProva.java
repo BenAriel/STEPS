@@ -1,7 +1,6 @@
 package controller;
 
 import entities.Prova;
-import entities.Questao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGerarProva">
+   <children>
+      <ImageView fitHeight="94.0" fitWidth="604.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/Rectangle%2018.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="geracaodequestoes" layoutX="221.0" layoutY="17.0" text="Geração de Questões">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="deslogar" fitHeight="40.0" fitWidth="106.0" layoutX="527.0" layoutY="10.0" onMouseClicked="#deslogar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/logout%201.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="voltar" fitHeight="40.0" fitWidth="40.0" layoutX="23.0" layoutY="10.0" onMouseClicked="#telaanterior" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/left-arrow%202.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="302.0" fitWidth="313.0" layoutX="149.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/Rectangle%209.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="161.0" layoutY="121.0" prefHeight="31.0" prefWidth="120.0" text="Número de questoes:" />
+      <TextField fx:id="numeroquestoes" layoutX="281.0" layoutY="124.0" prefHeight="25.0" prefWidth="132.0" />
+      <TextField fx:id="numerofaceis" layoutX="281.0" layoutY="160.0" prefHeight="25.0" prefWidth="132.0" />
+      <Label layoutX="221.0" layoutY="164.0" />
+      <Label layoutX="240.0" layoutY="164.0" text="Fáceis:" />
+      <Label layoutX="234.0" layoutY="200.0" />
+      <TextField fx:id="numeromedias" layoutX="281.0" layoutY="196.0" prefHeight="25.0" prefWidth="132.0" />
+      <Label layoutX="234.0" layoutY="200.0" text="Médias:" />
+      <TextField fx:id="numerodificeis" layoutX="281.0" layoutY="228.0" prefHeight="25.0" prefWidth="132.0" />
+      <Label layoutX="234.0" layoutY="232.0" text="Difíceis:" />
+      <Label layoutX="221.0" layoutY="266.0" text="Assunto(s):" />
+      <TextField fx:id="assuntos" layoutX="281.0" layoutY="266.0" prefHeight="60.0" prefWidth="132.0" />
+      <Button fx:id="gerar" layoutX="246.0" layoutY="333.0" mnemonicParsing="false" onAction="#gerarprova" prefHeight="40.0" prefWidth="108.0" style="-fx-background-radius: 8; -fx-background-color: #238700;" text="Gerar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="51.0" fitWidth="58.0" layoutX="43.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+      <Region layoutX="50.0" layoutY="107.0" prefHeight="60.0" prefWidth="58.0" style="-fx-background-color: #000000;">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Region>
+      <Region layoutX="50.0" layoutY="166.0" prefHeight="60.0" prefWidth="58.0" style="-fx-background-color: #000000;" />
+      <Region layoutX="50.0" layoutY="223.0" prefHeight="60.0" prefWidth="58.0" style="-fx-background-color: #238700;" />
+      <ImageView fx:id="telaquestoes" fitHeight="40.0" fitWidth="49.0" layoutX="55.0" layoutY="117.0" onMouseClicked="#irparaquestoes" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/pencil%201.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="telaprovas" fitHeight="40.0" fitWidth="49.0" layoutX="59.0" layoutY="176.0" onMouseClicked="#irtelaprovas" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/petition%201.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="49.0" layoutX="59.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/dices%201.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+   </children>
+</Pane>
