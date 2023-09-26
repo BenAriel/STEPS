@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -14,111 +15,187 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import view.TelaDisciplina;
+import view.TelaLogin;
+
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import connection.QuestaoDAO;
+
 public class ControllerQuestao implements Initializable {
+	
+	private ObservableList<Questao> disciplinas;
+    private ArrayList<Questao> retornoListar;
+    Questao questaoSelecionada; //vai ficar detectando que disciplina o usuário selecionou!
 
-        @FXML
-        private Button adicionar;
-    
-        @FXML
-        private Button apagar;
-    
-        @FXML
-        private TableColumn<Questao, String> assunto;
-    
-        @FXML
-        private TextField buscar;
-    
-        @FXML
-        private TableColumn<Questao, Integer> codigo;
-    
-        @FXML
-        private ImageView deslogar;
-    
-        @FXML
-        private TableColumn<Questao, Integer> dificuldade;
-    
-        @FXML
-        private Label disciplina;
-    
-        @FXML
-        private Button editar;
-    
-        @FXML
-        private TableColumn<Questao, String> enunciado;
-    
-        @FXML
-        private TableView<Questao> table;
-    
-        @FXML
-        private ImageView telagerarprovas;
-    
-        @FXML
-        private ImageView telaprovas;
-    
-        @FXML
-        private ImageView voltar;
-    
-        @FXML
-        void adicionarquestao(ActionEvent event) {
-    
-        }
-    
-        @FXML
-        void apagarquestao(ActionEvent event) {
-    
-        }
-    
-        @FXML
-        void buscarquestao(ActionEvent event) {
-    
-        }
-    
-        @FXML
-        void deslogar(MouseEvent event) {
-    
-        }
-    
-        @FXML
-        void editarquestao(ActionEvent event) {
-    
-        }
-    
-        @FXML
-        void irtelagerarprovas(MouseEvent event) {
-    
-        }
-    
-        @FXML
-        void irtelaprovas(MouseEvent event) {
-    
-        }
-    
-        @FXML
-        void telaanterior(MouseEvent event) {
-    
-        }
-         ObservableList<Questao> questoes = FXCollections.observableArrayList(
-        new Questao(1,"matematica", "qual a raiz quadrada de 4?", "Dois(2)","calculos para apenas aumentar as linahs e ver como fica",3),
-        new Questao(2,"portugues", "qual o significado do nome Ariel?", "Leao de Deus","esse pode ser curto",2),
-        new Questao(3,"historia", "qual o nome do primeiro presidente do brasil?", "Deodoro da Fonseca","esse pode ser longo",1),
-        new Questao(4,"geografia", "qual o nome do maior rio do mundo?", "Amazonas","esse pode ser longo",1),
-        new Questao(5,"matematica", "qual a raiz quadrada de 4?", "Dois(2)","calculos para apenas aumentar as linahs e ver como fica",3),
-        new Questao(6,"portugues", "qual o significado do nome Ariel?", "Leao de Deus","esse pode ser curto",2),
-        new Questao(7,"historia", "qual o nome do primeiro presidente do brasil?", "Deodoro da Fonseca","esse pode ser longo",1),
-        new Questao(8,"geografia", "qual o nome do maior rio do mundo?", "Amazonas","esse pode ser longo",1),
-        new Questao(9,"matematica", "qual a raiz quadrada de 4?", "Dois(2)","calculos para apenas aumentar as linahs e ver como fica",3),
-        new Questao(10,"portugues", "qual o significado do nome Ariel?", "Leao de Deus","esse pode ser curto",2),
-        new Questao(11,"historia", "qual o nome do primeiro presidente do brasil?", "Deodoro da Fonseca","esse pode ser longo",1)
-    );
-    @Override
-    public void initialize (URL location, ResourceBundle resources) {
-        codigo.setCellValueFactory(new PropertyValueFactory<Questao,Integer>("codigo"));
-       dificuldade.setCellValueFactory(new PropertyValueFactory<Questao,Integer>("NivelDeDificuldade"));
-        assunto.setCellValueFactory(new PropertyValueFactory<Questao,String>("assunto"));
-        enunciado.setCellValueFactory(new PropertyValueFactory<Questao,String>("enunciado"));
+	@FXML
+	private Button adicionar;// NÃO FEITO
 
-        table.setItems(questoes);
-    }
-    }
+	@FXML
+	private Button apagar;// NÃO FEITO
+
+	@FXML
+	private TableColumn<Questao, String> assunto;// FEITO
+
+	@FXML
+	private TextField buscar;// NÃO FEITO
+
+	@FXML
+	private TableColumn<Questao, Integer> codigo;// FEITO
+
+	@FXML
+	private ImageView sair;// feito
+
+	@FXML
+	private TableColumn<Questao, Integer> dificuldade;// FEITO
+
+	@FXML
+	private Label disciplina;// FEITO
+
+	@FXML
+	public Label nomeusuario;// FEITO
+
+	@FXML
+	private Button editar;// NÃO FEITO
+
+	@FXML
+	private TableColumn<Questao, String> enunciado;// FEITO
+
+	@FXML
+	private TableView<Questao> table;// FEITO
+
+	@FXML
+	private ImageView telagerarprovas;// NÃO FEITO
+
+	@FXML
+	private ImageView telaprovas;// NÃO FEITO
+
+	@FXML
+	private ImageView voltar;// feito
+
+	@FXML
+	void adicionarquestao(ActionEvent event) {
+
+	}
+
+	@FXML
+	void apagarquestao(ActionEvent event) {
+
+	}
+
+	@FXML
+	void buscarquestao(ActionEvent event) {
+		
+	}
+
+	@FXML
+	void deslogar(MouseEvent event) {
+		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
+		// atual janela
+		primaryStage.close(); // fecha a atual janela
+		TelaLogin telaLogin = new TelaLogin();
+		try {
+			telaLogin.start(new Stage()); // abre de volta a primeira tela de login!
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	void editarquestao(ActionEvent event) {
+
+	}
+
+	@FXML
+	void irtelagerarprovas(MouseEvent event) {
+
+	}
+
+	@FXML
+	void irtelaprovas(MouseEvent event) {
+
+	}
+
+	@FXML
+	void telaanterior(MouseEvent event) {
+		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
+		// atual janela
+		primaryStage.close(); // fecha a atual janela
+		TelaDisciplina telaDisciplina = new TelaDisciplina();
+		try {
+			telaDisciplina.start(new Stage(), this.disciplina.getText(), this.nomeusuario.getText()); // manda os nomes
+																										// corretos para
+																										// a tela de
+																										// provas!
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
+	private void initializeNodes() {
+		codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+		dificuldade.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		assunto.setCellValueFactory(new PropertyValueFactory<>("assunto"));		
+		enunciado.setCellValueFactory(new PropertyValueFactory<>("enunciado"));
+	}
+
+	public void initialize(URL urln, ResourceBundle rb) {
+
+		table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null) {
+				// O objeto Disciplina selecionado está em newValue
+				questaoSelecionada = newValue;
+				table.refresh();
+				System.out.println("Disciplina selecionada: " + questaoSelecionada.getCodigo());
+			}
+		});
+
+		initializeNodes();
+		codigo.setCellValueFactory(new PropertyValueFactory<Questao,Integer>("codigo"));
+		dificuldade.setCellValueFactory(new PropertyValueFactory<Questao, Integer>("dificuldade"));
+		assunto.setCellValueFactory(new PropertyValueFactory<Questao, String>("codigo"));
+		enunciado.setCellValueFactory(new PropertyValueFactory<Questao, String>("enunciado"));
+		atualizarDados();
+	}
+
+	public void preencherDisciplina(String nomeDisciplina) {
+		this.disciplina.setText(nomeDisciplina);
+	}
+
+	public void preencherUsuario(String nomeUsuario) {
+		this.nomeusuario.setText(nomeUsuario);
+
+	}
+
+	public void atualizarDados() {
+
+		QuestaoDAO discDAO = new QuestaoDAO();
+		retornoListar = discDAO.listar();
+		disciplinas = FXCollections.observableArrayList(retornoListar);
+		table.setItems(disciplinas);
+	}
+
+	public Button getEditar() {
+		return editar;
+	}
+
+	public void setEditar(Button editar) {
+		this.editar = editar;
+	}
+
+	public Button getApagar() {
+		return apagar;
+	}
+
+	public void setApagar(Button apagar) {
+		this.apagar = apagar;
+	}
+}
