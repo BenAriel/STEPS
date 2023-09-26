@@ -1,0 +1,59 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TelasTeste",
+            "request": "launch",
+            "mainClass": "view.TelasTeste",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "TelaLogin",
+            "request": "launch",
+            "mainClass": "view.TelaLogin",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Principal",
+            "request": "launch",
+            "mainClass": "connection.Principal",
+            "projectName": "projeto_poo_bd_eefc7134"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Principal",
+            "request": "launch",
+            "mainClass": "Principal",
+            "projectName": "projeto_poo_bd_eefc7134"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "entities.Main",
+            "projectName": "projeto_poo_bd_eefc7134"
+        },
+        {
+            "type": "java",
+            "name": "HelloFX",
+            "request": "launch",
+            "mainClass": "view.HelloFX",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-11.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
