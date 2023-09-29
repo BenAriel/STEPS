@@ -1,14 +1,23 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import view.TelaDisciplina;
+import view.TelaLogin;
 
 public class ControllerGerarProva {
+	
+	private String nomeusuario; //servem apenas para guardar o nome e a disciplina para o retorno
+	private String disciplina;
 
     @FXML
     private TextField assuntos;
@@ -44,9 +53,19 @@ public class ControllerGerarProva {
     private ImageView voltar;
 
     @FXML
-    void deslogar(MouseEvent event) {
+	void deslogar(MouseEvent event) {
+		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
+		// atual janela
+		primaryStage.close(); // fecha a atual janela
+		TelaLogin telaLogin = new TelaLogin();
+		try {
+			telaLogin.start(new Stage()); // abre de volta a primeira tela de login!
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-    }
+	}
 
     @FXML
     void gerarprova(ActionEvent event) {
@@ -64,9 +83,36 @@ public class ControllerGerarProva {
     }
 
     @FXML
-    void telaanterior(MouseEvent event) {
+	void telaanterior(MouseEvent event) {
+		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
+		// atual janela
+		primaryStage.close(); // fecha a atual janela
+		TelaDisciplina telaDisciplina = new TelaDisciplina();
+		try {
+			telaDisciplina.start(new Stage(), getDisciplina(), getNomeusuario()); // manda os nomes
+																										// corretos para
+																										// a tela de
+																										// provas!
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-    }
+	public String getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public String getNomeusuario() {
+		return nomeusuario;
+	}
+
+	public void setNomeusuario(String nomeusuario) {
+		this.nomeusuario = nomeusuario;
+	}
 
 }
-
