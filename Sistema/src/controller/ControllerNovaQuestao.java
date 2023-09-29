@@ -1,122 +1,79 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import entities.Questao;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import connection.QuestaoDAO;
+import javafx.stage.Stage;
+import view.TelaQuestao;
 
 public class ControllerNovaQuestao {
+	
+	//serve para guardar o nome da disciplina, apenas
+	private String disciplina;
+	
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
+	}
+	
+    @FXML
+    private Button adicionar;//NÃO FEITO
+    
+    @FXML
+    private Label questao;//NÃO FEITO
 
     @FXML
-    private Button adicionar;
+    private TextField assunto;//NÃO FEITO
 
     @FXML
-    private TextField assunto;
+    private ImageView deslogar;//NÃO FEITO
 
     @FXML
-    private ImageView deslogar;
+    private TextField enunciado;//NÃO FEITO
 
     @FXML
-    private TextField enunciado;
+    private TextField gabarito;//NÃO FEITO
 
     @FXML
-    private TextField gabarito;
+    private TextField niveldificuldade;//NÃO FEITO
 
     @FXML
-    private TextField niveldificuldade;
+    private Label nomeusuario;//NÃO FEITO
 
     @FXML
-    private Label nomeusuario;
+    private ImageView voltar;//feito
 
     @FXML
-    private TextField pergunta;
-
-    @FXML
-    private TextField titulo;
-
-    @FXML
-    private ImageView voltar;
-
-    @FXML
-    void deslogar(MouseEvent event) {
+    void deslogar(MouseEvent event) {//NÃO FEITO
 
     }
 
     @FXML
-    void fimaddquestao(ActionEvent event) throws IOException {
-        Questao questao = new Questao();
-        if(niveldificuldade.getText()=="fácil"){
-            questao.setNivelDeDificuldade(1);
-        }else if(niveldificuldade.getText()=="médio"){
-            questao.setNivelDeDificuldade(2);
-        }else if(niveldificuldade.getText()=="difícil"){
-            questao.setNivelDeDificuldade(3);
-        }
-        questao.setAssunto(assunto.getText());
-         String enunciadoparcial = titulo.getText();
-          enunciadoparcial += "\n"+ enunciado.getText();
-         enunciadoparcial  += "\n " + pergunta.getText();
-            questao.setEnunciado(enunciadoparcial);
-         questao.setGabarito(gabarito.getText()); 
-         
-         QuestaoDAO questaoDAO = new QuestaoDAO();
-            questaoDAO.inserir(questao);
-         FileOutputStream out =null;
-        XWPFDocument document = new XWPFDocument();
-        String nomearquivo ="Questão" + questao.getCodigo() + ".docx";
-        try {
-            out = new FileOutputStream(new File(nomearquivo));
-            XWPFParagraph paragraph = document.createParagraph();
-            paragraph.setAlignment(ParagraphAlignment.CENTER);
-            XWPFRun run = paragraph.createRun();
-            run.setText(titulo.getText());
-            run.setBold(true);
-
-            run.addBreak();
-            run.addBreak();
-            XWPFParagraph paragraph2 = document.createParagraph();
-            paragraph2.setAlignment(ParagraphAlignment.BOTH);
-            XWPFRun run2 = paragraph2.createRun();
-            run2.addTab();
-            run2.setText(enunciado.getText());
-            run2.addBreak();
-             XWPFParagraph paragraph3 = document.createParagraph();
-             paragraph3.setAlignment(ParagraphAlignment.BOTH);
-            XWPFRun run3 = paragraph3.createRun();
-            run3.addTab();
-            run3.setText(pergunta.getText());
-
-            document.write(out);
-            out.close();
-            document.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } 
-
-
-
+    void fimaddquestao(ActionEvent event) {//NÃO FEITO
 
     }
 
     @FXML
-    void telaanterior(MouseEvent event) {
-
+    void telaanterior(MouseEvent event) throws IOException {//feito
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+    	primaryStage.close(); //fecha a tela atual para abrir a nova!
+    	TelaQuestao retornar = new TelaQuestao();
+    	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
     }
+
+	public void preencherNome(String nomeUsuario) { //preenche o nome do usuário
+		this.nomeusuario.setText(nomeUsuario);
+		
+	}
+	
+	public void preencherQuestao(int Codigo) {
+		this.questao.setText("Codigo: " + Codigo);
+	}
 
 }
-
