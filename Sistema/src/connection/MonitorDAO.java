@@ -111,4 +111,8 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 		}
 		return listaDeMonitores;		
 	}
+
+    public Monitor buscarPorLogin(Monitor monitor) {
+        return null;
+    }
 }

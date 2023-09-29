@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import view.TelaDisciplina;
 import view.TelaLogin;
+import view.TelaNovaQuestao;
 
 import java.io.IOException;
 import java.net.URL;
@@ -79,7 +80,16 @@ public class ControllerQuestao implements Initializable {
 
 	@FXML
 	void adicionarquestao(ActionEvent event) {
-
+		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
+		// atual janela
+		primaryStage.close(); // fecha a atual janela
+		TelaNovaQuestao nq = new TelaNovaQuestao();
+		try {
+			nq.start(new Stage()); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -109,7 +119,7 @@ public class ControllerQuestao implements Initializable {
 
 	@FXML
 	void editarquestao(ActionEvent event) {
-
+		
 	}
 
 	@FXML

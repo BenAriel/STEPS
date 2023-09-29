@@ -41,8 +41,7 @@ public class ControllerLogin {
 		if ("admin123".equals(monitor.getLogin()) && "administrador123".equals(monitor.getSenha())) {
 			TelaInicio telaInicio = new TelaInicio();
 			try {
-				Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
-																								// atual janela
+				Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da  atual janela
 				primaryStage.close(); // fecha a atual janela!
 				telaInicio.start(new Stage(), "dr. Helihelcio da silva"); //também envia o nome do monitor como parâmetro
 			} catch (IOException e) {

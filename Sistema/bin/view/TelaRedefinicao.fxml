@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerRedefinicao">
    <children>
       <ImageView fitHeight="30.0" fitWidth="465.0" layoutX="62.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -31,16 +30,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label layoutX="162.0" layoutY="124.0" text="Login:" />
-      <TextField fx:id="login" layoutX="202.0" layoutY="120.0" prefHeight="25.0" prefWidth="216.0" />
-      <Label layoutX="129.0" layoutY="162.0" text="Nova Senha:" />
-      <PasswordField fx:id="novasenha" layoutX="202.0" layoutY="158.0" prefHeight="25.0" prefWidth="216.0" />
-      <Label layoutX="113.0" layoutY="197.0" text="Repita a Senha:" />
-      <PasswordField fx:id="repetirsenha" layoutX="202.0" layoutY="193.0" prefHeight="25.0" prefWidth="216.0" />
-      <Button fx:id="redefinicao" layoutX="234.0" layoutY="311.0" mnemonicParsing="false" onAction="#redefinicao" prefHeight="43.0" prefWidth="153.0" style="-fx-background-color: #238700; -fx-background-radius: 8;" text="Redefinir" textFill="#f8f7f7">
+      <Label layoutX="161.0" layoutY="160.0" text="Login:" />
+      <TextField fx:id="login" layoutX="201.0" layoutY="156.0" prefHeight="25.0" prefWidth="216.0" />
+      <Label layoutX="128.0" layoutY="198.0" text="Nova Senha:" />
+      <PasswordField fx:id="novasenha" layoutX="201.0" layoutY="194.0" prefHeight="25.0" prefWidth="216.0" />
+      <Label layoutX="112.0" layoutY="233.0" text="Repita a Senha:" />
+      <PasswordField fx:id="repetirsenha" layoutX="201.0" layoutY="229.0" prefHeight="25.0" prefWidth="216.0" />
+      <Button fx:id="btRedefinicao" layoutX="234.0" layoutY="311.0" mnemonicParsing="false" onAction="#redefinicao" prefHeight="43.0" prefWidth="153.0" style="-fx-background-color: #238700; -fx-background-radius: 8;" text="Redefinir" textFill="#f8f7f7">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField fx:id="matricula" layoutX="202.0" layoutY="125.0" prefHeight="25.0" prefWidth="216.0" />
+      <Label layoutX="144.0" layoutY="129.0" text="Matricula" />
+      <TextField fx:id="nomecompleto" layoutX="203.0" layoutY="91.0" prefHeight="25.0" prefWidth="216.0" />
+      <Label layoutX="109.0" layoutY="95.0" text="Nome completo" />
    </children>
 </Pane>

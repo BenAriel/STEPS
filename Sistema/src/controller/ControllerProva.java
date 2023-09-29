@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -109,6 +110,20 @@ public class ControllerProva implements Initializable{
          numeroquestoes.setCellValueFactory(new PropertyValueFactory<Prova,Integer>("numeroDeQuestoes"));
  
          table.setItems(provas);
+    }
+
+    public Node getEditar() {
+        return null;
+    }
+
+    public Node getApagar() {
+        return null;
+    }
+
+    public void preencherDisciplina(String nomeDisciplina) {
+    }
+
+    public void preencherUsuario(String nomeUsuario) {
     }
 
 }

@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 public class TelasTeste extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
-			 Parent root = FXMLLoader.load(getClass().getResource("TelaNovaDisciplina.fxml"));
+			 Parent root = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
 			Scene cena = new Scene(root);
 			primaryStage.setTitle("Sistema de Geração de Provas(STEPS) ");
 			primaryStage.setScene(cena);

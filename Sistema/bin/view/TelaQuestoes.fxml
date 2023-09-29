@@ -19,7 +19,7 @@
             <Image url="@imagens/Rectangle%2018.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deslogar" fitHeight="40.0" fitWidth="106.0" layoutX="532.0" layoutY="10.0" onMouseClicked="#deslogar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sair" fitHeight="40.0" fitWidth="106.0" layoutX="532.0" layoutY="10.0" onMouseClicked="#deslogar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagens/logout%201.png" />
          </image>
@@ -115,5 +115,6 @@
          </image>
       </ImageView>
       <Label layoutX="95.0" layoutY="66.0" text="Buscar Questão" />
+      <Label fx:id="nomeusuario" layoutX="286.0" layoutY="42.0" text="nomeusuario" />
    </children>
 </Pane>
