@@ -17,6 +17,7 @@ import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import connection.QuestaoDAO;
 
 public class ControllerNovaQuestao {
 
@@ -71,6 +72,9 @@ public class ControllerNovaQuestao {
          enunciadoparcial  += "\n " + pergunta.getText();
             questao.setEnunciado(enunciadoparcial);
          questao.setGabarito(gabarito.getText()); 
+         
+         QuestaoDAO questaoDAO = new QuestaoDAO();
+            questaoDAO.inserir(questao);
          FileOutputStream out =null;
         XWPFDocument document = new XWPFDocument();
         String nomearquivo ="Questão" + questao.getCodigo() + ".docx";

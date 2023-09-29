@@ -6,6 +6,38 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TelaDisciplina",
+            "request": "launch",
+            "mainClass": "view.TelaDisciplina",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "TelaInicio",
+            "request": "launch",
+            "mainClass": "view.TelaInicio",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "TelaQuestao",
+            "request": "launch",
+            "mainClass": "view.TelaQuestao",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "TelaNovaQuestao",
+            "request": "launch",
+            "mainClass": "view.TelaNovaQuestao",
+            "projectName": "projeto_poo_bd_eefc7134",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "TelasTeste",
             "request": "launch",
             "mainClass": "view.TelasTeste",

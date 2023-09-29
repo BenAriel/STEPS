@@ -9,6 +9,10 @@
         "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.web.jar",
         "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx-swt.jar",
         "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.media.jar",
-        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.swing.jar"
+        "c:\\Program Files\\Java\\javafx-sdk-17\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-3.17.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-ooxml-3.17.jar",
+        "c:\\Program Files\\Java\\poi-3.17\\poi-ooxml-schemas-3.17.jar",
+        "c:\\Users\\Cliente\\Downloads\\dom4j-2.1.4.jar"
     ]
 }
