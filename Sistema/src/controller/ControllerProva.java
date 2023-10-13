@@ -21,23 +21,39 @@ import view.TelaLogin;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import connection.ProvaDAO;
 public class ControllerProva implements Initializable{
 
-    @FXML
-    private Button adicionar;//NÃO FEITO
-
+	private ObservableList<Prova> provaObservable;
+	private ArrayList<Prova> retornoListar; //vai guardar o arraylist do listar!
+	private ArrayList<Prova> filtrarListar; //vai escolher apenas as questões que têm código desejado
+	Prova provaSelecionada; //vai ser usado para guardar a prova que o usuário selecionou!
+	
     @FXML
     private Button apagar;//NÃO FEITO
+    
+    @FXML
+    private TableColumn<Prova, String> disciplinaprova;//FEITO
+    
+    @FXML
+    private TableColumn<Prova, Integer> questoesmedianas;//FEITO
 
+    @FXML
+    private TableColumn<Prova, Integer> questoesdificeis;//FEITO
+    
+    @FXML
+    private TableColumn<Prova, Integer> questoesfaceis;//FEITO
+    
     @FXML
     private TextField buscar;//NÃO FEITO
 
     @FXML
-    private TableColumn<Prova, Integer> codigo;//NÃO FEITO
+    private TableColumn<Prova, Integer> codigo;//FEITO
 
     @FXML
-    private TableColumn<Prova, LocalDate> data;//NÃO FEITO
+    private TableColumn<Prova, LocalDate> data;//FEITO
 
     @FXML
     private ImageView sair;//FEITO
@@ -51,12 +67,11 @@ public class ControllerProva implements Initializable{
     @FXML
     private Button editar;//NÃO FEITO
 
+    @FXML
+    private TableColumn<Prova, Integer> numeroquestoes;//FEITO
 
     @FXML
-    private TableColumn<Prova, Integer> numeroquestoes;//NÃO FEITO
-
-    @FXML
-    private TableView<Prova> table;//NÃO FEITO
+    private TableView<Prova> table;//FEITO
 
     @FXML
     private ImageView telagerarprovas;//NÃO FEITO
@@ -123,19 +138,64 @@ public class ControllerProva implements Initializable{
         new Prova (1,"SÃO PAULO CAMPEAO",10,3,5,2)
     );
 
-
+     private void initializeNodes() {
+ 		codigo.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("codigo"));
+ 		disciplinaprova.setCellValueFactory(new PropertyValueFactory<Prova, String>("disciplina"));
+ 		questoesfaceis.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesFaceis"));
+ 		questoesmedianas.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesMedias"));
+ 		questoesdificeis.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesDificeis"));
+ 		numeroquestoes.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("numeroDeQuestoes"));
+ 	    codigo.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("codigo")); // Adicione esta linha
+ 	    data.setCellValueFactory(new PropertyValueFactory<Prova, LocalDate>("data"));
+ 	}
+         
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        codigo.setCellValueFactory(new PropertyValueFactory<Prova,Integer>("codigo"));
-        data.setCellValueFactory(new PropertyValueFactory<Prova,LocalDate>("data"));
-         numeroquestoes.setCellValueFactory(new PropertyValueFactory<Prova,Integer>("numeroDeQuestoes"));
- 
-         table.setItems(provas);
-    }
+	public void initialize(URL url, ResourceBundle rb) {
+    	filtrarListar = new ArrayList<>();
+		table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null) {
+				// O objeto Disciplina selecionado está em newValue
+				provaSelecionada = newValue;
+				table.refresh();
+				System.out.println("Disciplina selecionada: " + provaSelecionada.getCodigo());
+			}
+		});
+		
+	    initializeNodes();
+	    codigo.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("codigo"));
+ 		disciplinaprova.setCellValueFactory(new PropertyValueFactory<Prova, String>("disciplina"));
+ 		questoesfaceis.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesFaceis"));
+ 		questoesmedianas.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesMedias"));
+ 		questoesdificeis.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("questoesDificeis"));
+ 		numeroquestoes.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("numeroDeQuestoes"));
+ 	    codigo.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("codigo")); // Adicione esta linha
+ 	    data.setCellValueFactory(new PropertyValueFactory<Prova, LocalDate>("data"));
+ 	    atualizarDados();
+	}
     
-    public void preencherDisciplina(String disciplina) { //vai iniciar a disciplina com o nome correto!
-    	this.disciplina.setText(disciplina);
-    }
+    public void atualizarDados() {
+
+		ProvaDAO discDAO = new ProvaDAO();
+		retornoListar = discDAO.listar();
+		System.out.println(disciplina.getText() + "Foi esse aqui que você mandou inicializar!");
+		for (Prova questao : retornoListar) {
+			System.out.println(questao.toString());
+            if(questao.getDisciplina().equals(disciplina.getText())) {
+            	System.out.println(questao.toString());
+            	filtrarListar.add(questao); //se a questao escolhida estiver presente, vai adicionar ela a lista de questoes filtradas
+            	System.out.println(questao.toString());
+            }
+        }
+		provaObservable = FXCollections.observableArrayList(filtrarListar);
+		table.setItems(provaObservable);
+	}
+    
+    public void preencherDisciplina(String nomeDisciplina) {
+		this.disciplina.setText(nomeDisciplina);
+		System.out.println(disciplina.getText());
+		initializeNodes();
+		atualizarDados();
+	}
     public void preencherUsuario(String usuario) { //vai iniciar a label usuario com o nome do usuáiro corretamente!
     	this.nomeusuario.setText(usuario);
     }
