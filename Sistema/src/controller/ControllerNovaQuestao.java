@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import view.TelaQuestao;
-<<<<<<< HEAD
 import entities.Questao;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,31 +32,16 @@ import connection.QuestaoDAO;
 
 public class ControllerNovaQuestao {
     private String disciplina;
-=======
-
-public class ControllerNovaQuestao {
-	
-	//serve para guardar o nome da disciplina, apenas
-	private String disciplina;
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
 	
 	private int codigoQuestao;
 	
 	public void setDisciplina(String disciplina) {
 		this.disciplina = disciplina;
 	}
-<<<<<<< HEAD
-=======
-	
-    @FXML
-    private Button adicionar;//FEITO
-    
-    @FXML
-    private Label questao;//FEITO
-
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
     @FXML
     private TextField assunto;//FEITO
+
+    private Button adicionar;
 
     @FXML
     private ImageView deslogar;//FEITO
@@ -74,14 +58,8 @@ public class ControllerNovaQuestao {
     @FXML
     private TextField niveldificuldade;//FEITO
 
+   
     @FXML
-    private Label nomeusuario;//FEITO
-
-    @FXML
-    private ImageView voltar;//FEITO
-
-    @FXML
-<<<<<<< HEAD
     private Label nomeusuario;
 
     @FXML
@@ -97,14 +75,10 @@ public class ControllerNovaQuestao {
 
     @FXML
     void deslogar(MouseEvent event) {
-=======
-    void deslogar(MouseEvent event) {//NÃO FEITO
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
 
     }
 
     @FXML
-<<<<<<< HEAD
     void fimaddquestao(ActionEvent event) throws IOException, InsertEX {
         Questao questao = new Questao();
         if(niveldificuldade.getText()=="fácil"){
@@ -166,55 +140,13 @@ public class ControllerNovaQuestao {
     	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
 
 
-=======
-    void fimaddquestao(ActionEvent event) throws IOException {//NÃO FEITO
-    	QuestaoDAO inserirNovaQuestao = new QuestaoDAO();
-    	Questao novaQuestao = new Questao();
-    	int nivelDificuldade = Integer.parseInt(niveldificuldade.getText()); //faz o casting do nivel de dificuldade para inteiro
-    	novaQuestao.setNivelDeDificuldade(nivelDificuldade); 
-    	novaQuestao.setDisciplina(this.disciplina);
-    	novaQuestao.setAssunto(assunto.getText()); 
-    	novaQuestao.setEnunciado(enunciado.getText());
-    	novaQuestao.setGabarito(gabarito.getText());
-    	inserirNovaQuestao.inserir(novaQuestao);
-   
-    	//ao terminar de inserir a nova questão, volta para a tela anterior!
-    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
-    	primaryStage.close(); //fecha a tela atual para abrir a nova!
-    	TelaQuestao retornar = new TelaQuestao();
-    	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
-    	
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
     }
     
-    @FXML
-	void editarquestao(ActionEvent event) throws IOException {
-    	QuestaoDAO inserirNovaQuestao = new QuestaoDAO();
-    	Questao novaQuestao = new Questao();
-    	int nivelDificuldade = Integer.parseInt(niveldificuldade.getText()); //faz o casting do nivel de dificuldade para inteiro
-    	novaQuestao.setCodigo(getCodigoQuestao());
-    	novaQuestao.setNivelDeDificuldade(nivelDificuldade); 
-    	novaQuestao.setDisciplina(this.disciplina);
-    	novaQuestao.setAssunto(assunto.getText()); 
-    	novaQuestao.setEnunciado(enunciado.getText());
-    	novaQuestao.setGabarito(gabarito.getText());
-    	inserirNovaQuestao.alterar(novaQuestao);
-    	
-    	//ao terminar de alterar a nova questão, volta para a tela anterior!
-    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
-    	primaryStage.close(); //fecha a tela atual para abrir a nova!
-    	TelaQuestao retornar = new TelaQuestao();
-    	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
-	}
+   
 
     @FXML
-<<<<<<< HEAD
     void telaanterior(MouseEvent event) throws IOException {
         	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
-=======
-    void telaanterior(MouseEvent event) throws IOException {//NÃO FEITO
-    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
     	primaryStage.close(); //fecha a tela atual para abrir a nova!
     	TelaQuestao retornar = new TelaQuestao();
     	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
@@ -248,25 +180,6 @@ public class ControllerNovaQuestao {
     	TelaQuestao retornar = new TelaQuestao();
     	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
 	}
-    public void preencherNome(String nomeUsuario) { //preenche o nome do usuário
-		this.nomeusuario.setText(nomeUsuario);
-		
-	}
-	
-	public void preencherDisciplina(String nomeDisciplina) {
-		this.disciplina = nomeDisciplina;
-	}
-	
-	public void preencherQuestao(int Codigo) {
-		this.questao.setText("Codigo: " + Codigo);
-	}
-    public int getCodigoQuestao() {
-		return codigoQuestao;
-	}
-
-	public void setCodigoQuestao(int codigoQuestao) {
-		this.codigoQuestao = codigoQuestao;
-	}
 
 	
 	
@@ -284,14 +197,6 @@ public class ControllerNovaQuestao {
 		this.questao.setText("Codigo: " + Codigo);
 	}
 
-	public Button getAdicionar() {
-		return adicionar;
-	}
-
-	public void setAdicionar(Button adicionar) {
-		this.adicionar = adicionar;
-	}
-
 	public Button getEditar() {
 		return editar;
 	}
@@ -302,5 +207,8 @@ public class ControllerNovaQuestao {
 
 	public void setCodigoQuestao(int codigoQuestao) {
 		this.codigoQuestao = codigoQuestao;
+	}
+    public Button getAdicionar() {
+		return adicionar;
 	}
 }

@@ -216,8 +216,5 @@ public class ControllerProva implements Initializable{
 		this.apagar = apagar;
 	}
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
