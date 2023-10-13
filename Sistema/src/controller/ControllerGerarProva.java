@@ -13,7 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import view.TelaDisciplina;
 import view.TelaLogin;
+<<<<<<< HEAD
 import entities.Prova;
+=======
+>>>>>>> 1c8254e14b6b2a5a6c163f7b2721234736889526
 
 public class ControllerGerarProva {
 	
@@ -122,4 +125,3 @@ public class ControllerGerarProva {
 	}
 
 }
-
