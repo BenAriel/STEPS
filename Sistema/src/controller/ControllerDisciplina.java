@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import view.TelaGerarProva;
 import view.TelaInicio;
 import view.TelaLogin;
 import view.TelaProva;
@@ -30,7 +31,7 @@ public class ControllerDisciplina {
 	public Label disciplina;//feito
 
     @FXML
-    private Button gerarprovas;//NÃO FEITO
+    private Button abrirgeraradorprovas;//feito
 
     @FXML
     private Label nomeusuario;//feito
@@ -72,8 +73,11 @@ public class ControllerDisciplina {
     
 
     @FXML
-    void gerarprovas(ActionEvent event) {
-    	//TODO
+    void gerarprovas(ActionEvent event) throws IOException {//NÃO FEITO
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+    	primaryStage.close(); //fecha a tela atual para abrir a nova!
+    	TelaGerarProva retornar = new TelaGerarProva();
+    	retornar.start(new Stage(),this.disciplina.getText(), this.nomeusuario.getText() );
     }
 
     @FXML

@@ -1,5 +1,7 @@
 package controller;
 
+import BO.MonitorBO;
+import Exception.AlreadyExistsLoginEX;
 import connection.MonitorDAO;
 import entities.Monitor;
 import javafx.fxml.FXML;
@@ -18,9 +20,9 @@ public class ControllerCadastro {
 	@FXML private Label error;
 	@FXML private Button btCadastrar;
 	
-	public void cadastrar() {
+	public void cadastrar() throws AlreadyExistsLoginEX {
 		Monitor monitor = new Monitor();
-		MonitorDAO buscador = new MonitorDAO();
+		MonitorBO buscador = new MonitorBO();
 		monitor.setLogin(novologin.getText());
 		monitor.setSenha(novasenha.getText());
 		monitor.setNomeMonitor(nome.getText());
@@ -30,7 +32,7 @@ public class ControllerCadastro {
 		String senhaProfessor = senhaprofessor.getText();
 		if (textoRepitirSenha.equals(monitor.getSenha()) && loginProfessor.equals("admin123") && senhaProfessor.equals("administrador123")) {
 		    System.out.println("As senhas são iguais!");
-		    buscador.inserir(monitor);
+		    buscador.cadastrar(monitor);
 		} else {
 		    System.out.println("As senhas não são iguais!");
 		    error.setVisible(true);

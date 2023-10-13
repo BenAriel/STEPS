@@ -4,7 +4,29 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "TelaGerarProva",
+            "request": "launch",
+            "mainClass": "view.TelaGerarProva",
+            "projectName": "Sistema_78961c27"
+        },
+        {
+            "type": "java",
+            "name": "TelaDisciplina",
+            "request": "launch",
+            "mainClass": "view.TelaDisciplina",
+            "projectName": "Sistema_78961c27",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "TelaQuestao",
+            "request": "launch",
+            "mainClass": "view.TelaQuestao",
+            "projectName": "Sistema_78961c27",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
         {
             "type": "java",
             "name": "TelaCadastro",

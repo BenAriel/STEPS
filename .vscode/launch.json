@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "view.Teste",
+            "projectName": "projeto_poo_bd_eefc7134"
+        },
+        {
+            "type": "java",
+            "name": "TesteGerarProvas",
+            "request": "launch",
+            "mainClass": "view.TesteGerarProvas",
+            "projectName": "projeto_poo_bd_eefc7134"
+        },
+        {
+            "type": "java",
             "name": "TelaDisciplina",
             "request": "launch",
             "mainClass": "view.TelaDisciplina",

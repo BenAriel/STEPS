@@ -113,6 +113,26 @@ public class MonitorDAO extends BaseDAO_IMP<Monitor> {
 	}
 
     public Monitor buscarPorLogin(Monitor monitor) {
-        return null;
+        Monitor monitorDeRetorno = new Monitor(); //esse objeto monitor é quem vai retornar
+		String sql = "Select * from Monitor where login = ?";
+		con = getConnection();
+		PreparedStatement ptst;
+		ResultSet resultSet = null;
+		try {
+			ptst = con.prepareStatement(sql);
+			ptst.setString(1, monitor.getLogin());
+			resultSet = ptst.executeQuery();
+			while (resultSet.next()) {		
+				monitorDeRetorno.setNomeMonitor(resultSet.getString("nome"));
+	        	monitorDeRetorno.setLogin(resultSet.getString("login"));
+	        	monitorDeRetorno.setSenha(resultSet.getString("senha"));
+	        	monitorDeRetorno.setMatricula(resultSet.getString("matricula"));
+	        	monitorDeRetorno.toString();
+			}
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return monitorDeRetorno;
     }
 }

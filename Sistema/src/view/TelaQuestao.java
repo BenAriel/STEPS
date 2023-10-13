@@ -30,6 +30,7 @@ public class TelaQuestao extends Application {
         // Configure a disciplina no controlador
         controller.preencherDisciplina(nomeDisciplina);
         controller.preencherUsuario(nomeUsuario);
+        controller.setDisciplinaEscolhida(nomeDisciplina);
         
         if (nomeUsuario.equals("dr. Helihelcio da silva")) {
         	controller.getEditar().setVisible(true);
@@ -46,4 +47,3 @@ public class TelaQuestao extends Application {
         launch();
     }
 }
-

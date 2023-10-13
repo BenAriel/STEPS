@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import BO.MonitorBO;
 import connection.MonitorDAO;
 import entities.Monitor;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class ControllerLogin {
 	public void autenticar(ActionEvent event) {
 		System.out.println("Clicou em entrar!");
 		Monitor monitor = new Monitor();
-		MonitorDAO buscador = new MonitorDAO();
+		MonitorBO buscador = new MonitorBO();
 		monitor.setLogin(login.getText());
 		monitor.setSenha(senha.getText());
 
@@ -54,8 +55,7 @@ public class ControllerLogin {
 			System.out.println(monitor.getLogin());
 			System.out.println(monitor.getSenha());
 			try {
-				Monitor monitorAutenticado = (Monitor) buscador.buscarPorLogin(monitor);
-				System.out.println(monitorAutenticado.getNomeMonitor());
+				Monitor monitorAutenticado =buscador.autenticar(monitor);
 				if (monitorAutenticado.getNomeMonitor() == null) {
 					// indicar que houve um erro
 					error.setVisible(true);

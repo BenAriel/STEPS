@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import view.TelaDisciplina;
 import view.TelaLogin;
 import view.TelaNovaQuestao;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,10 +30,13 @@ public class ControllerQuestao implements Initializable {
 	
 	private ObservableList<Questao> disciplinas;
     private ArrayList<Questao> retornoListar;
+    private ArrayList<Questao> filtrarListar; //vai escolher apenas as questões que têm código desejado
     Questao questaoSelecionada; //vai ficar detectando que disciplina o usuário selecionou!
 
+    private String disciplinaEscolhida; //vai ser usado para filtrar as disciplinas
+    
 	@FXML
-	private Button adicionar;// NÃO FEITO
+	private Button adicionar;// FEITO
 
 	@FXML
 	private Button apagar;// NÃO FEITO
@@ -61,7 +63,7 @@ public class ControllerQuestao implements Initializable {
 	public Label nomeusuario;// FEITO
 
 	@FXML
-	private Button editar;// NÃO FEITO
+	private Button editar;// NÃO TESTADO
 
 	@FXML
 	private TableColumn<Questao, String> enunciado;// FEITO
@@ -79,18 +81,13 @@ public class ControllerQuestao implements Initializable {
 	private ImageView voltar;// feito
 
 	@FXML
-	void adicionarquestao(ActionEvent event) {
-		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
-		// atual janela
-		primaryStage.close(); // fecha a atual janela
-		TelaNovaQuestao nq = new TelaNovaQuestao();
-		try {
-			nq.start(new Stage()); 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	void adicionarquestao(ActionEvent event) throws IOException {
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+    	primaryStage.close(); //fecha a tela atual para abrir a nova!
+    	TelaNovaQuestao telaQuestao = new TelaNovaQuestao();
+    	telaQuestao.start(new Stage(),this.disciplina.getText(), this.nomeusuario.getText()); //manda os nomes corretos para a tela de provas!
+    	
+    }
 
 	@FXML
 	void apagarquestao(ActionEvent event) {
@@ -118,9 +115,13 @@ public class ControllerQuestao implements Initializable {
 	}
 
 	@FXML
-	void editarquestao(ActionEvent event) {
-		
-	}
+	void editarquestao(ActionEvent event) throws IOException {
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+    	primaryStage.close(); //fecha a tela atual para abrir a nova!
+    	TelaNovaQuestao telaQuestao = new TelaNovaQuestao();
+    	telaQuestao.start(new Stage(),this.disciplina.getText(),questaoSelecionada.getCodigo()); //manda os nomes corretos para a tela de provas!
+    	
+    }
 
 	@FXML
 	void irtelagerarprovas(MouseEvent event) {
@@ -158,22 +159,24 @@ public class ControllerQuestao implements Initializable {
 	}
 
 	public void initialize(URL urln, ResourceBundle rb) {
+	    // Inicialize a lista filtrarListar
+	    filtrarListar = new ArrayList<>();
+	    
+	    table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+	            // O objeto Disciplina selecionado está em newValue
+	            questaoSelecionada = newValue;
+	            table.refresh();
+	            System.out.println("Disciplina selecionada: " + questaoSelecionada.getCodigo());
+	        }
+	    });
 
-		table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-			if (newValue != null) {
-				// O objeto Disciplina selecionado está em newValue
-				questaoSelecionada = newValue;
-				table.refresh();
-				System.out.println("Disciplina selecionada: " + questaoSelecionada.getCodigo());
-			}
-		});
-
-		initializeNodes();
-		codigo.setCellValueFactory(new PropertyValueFactory<Questao,Integer>("codigo"));
-		dificuldade.setCellValueFactory(new PropertyValueFactory<Questao, Integer>("dificuldade"));
-		assunto.setCellValueFactory(new PropertyValueFactory<Questao, String>("codigo"));
-		enunciado.setCellValueFactory(new PropertyValueFactory<Questao, String>("enunciado"));
-		atualizarDados();
+	    initializeNodes();
+	    codigo.setCellValueFactory(new PropertyValueFactory<Questao,Integer>("codigo"));
+	    dificuldade.setCellValueFactory(new PropertyValueFactory<Questao, Integer>("dificuldade"));
+	    assunto.setCellValueFactory(new PropertyValueFactory<Questao, String>("codigo"));
+	    enunciado.setCellValueFactory(new PropertyValueFactory<Questao, String>("enunciado"));
+	    atualizarDados();
 	}
 
 	public void preencherDisciplina(String nomeDisciplina) {
@@ -189,7 +192,12 @@ public class ControllerQuestao implements Initializable {
 
 		QuestaoDAO discDAO = new QuestaoDAO();
 		retornoListar = discDAO.listar();
-		disciplinas = FXCollections.observableArrayList(retornoListar);
+		for (Questao questao : retornoListar) {
+            if(questao.getDisciplina().equals(disciplinaEscolhida)) {
+            	filtrarListar.add(questao); //se a questao escolhida estiver presente, vai adicionar ela a lista de questoes filtradas
+            }
+        }
+		disciplinas = FXCollections.observableArrayList(filtrarListar);
 		table.setItems(disciplinas);
 	}
 
@@ -207,5 +215,13 @@ public class ControllerQuestao implements Initializable {
 
 	public void setApagar(Button apagar) {
 		this.apagar = apagar;
+	}
+	
+	public void setDisciplinaEscolhida(String disciplinaEscolhida) {
+		this.disciplinaEscolhida = disciplinaEscolhida;
+	}
+	
+	public String getDisciplinaEscolhida() {
+		return this.disciplinaEscolhida;
 	}
 }
