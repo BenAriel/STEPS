@@ -37,6 +37,7 @@ public class Disciplina {
         this.codigo=code;
         else
         System.out.println("Digite um código válido");
+        
     }
     
     public String getDescricao()
