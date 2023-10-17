@@ -31,17 +31,24 @@ import Exception.UpdateDisciplineEX;
 import connection.QuestaoDAO;
 
 public class ControllerNovaQuestao {
-    private String disciplina;
+	
+	//serve para guardar o nome da disciplina, apenas
+	private String disciplina;
 	
 	private int codigoQuestao;
 	
 	public void setDisciplina(String disciplina) {
 		this.disciplina = disciplina;
 	}
+	
+    @FXML
+    private Button adicionar;//FEITO
+    
+    @FXML
+    private Label questao;//FEITO
+
     @FXML
     private TextField assunto;//FEITO
-
-    private Button adicionar;
 
     @FXML
     private ImageView deslogar;//FEITO
@@ -58,121 +65,107 @@ public class ControllerNovaQuestao {
     @FXML
     private TextField niveldificuldade;//FEITO
 
-   
     @FXML
-    private Label nomeusuario;
+    private Label nomeusuario;//FEITO
 
     @FXML
     private TextField pergunta;
 
     @FXML
-    private TextField titulo;
+    private TextField título;
 
     @FXML
-    private ImageView voltar;
-
-    private Label questao;
+    private ImageView voltar;//FEITO
 
     @FXML
-    void deslogar(MouseEvent event) {
+    void deslogar(MouseEvent event) {//NÃO FEITO
 
     }
 
     @FXML
-    void fimaddquestao(ActionEvent event) throws IOException, InsertEX {
+    void fimaddquestao(ActionEvent event) throws IOException, InsertEX {//NÃO FEITO
+    	
         Questao questao = new Questao();
-        if(niveldificuldade.getText()=="fácil"){
+        if (niveldificuldade.getText().equals("fácil")) {
             questao.setNivelDeDificuldade(1);
-        }else if(niveldificuldade.getText()=="médio"){
+        } else if (niveldificuldade.getText().equals("médio")) {
             questao.setNivelDeDificuldade(2);
-        }else if(niveldificuldade.getText()=="difícil"){
+        } else if (niveldificuldade.getText().equals("difícil")) {
             questao.setNivelDeDificuldade(3);
         }
-        questao.setAssunto(assunto.getText());
-         String enunciadoparcial = titulo.getText();
+
+    	questao.setAssunto(assunto.getText());
+         String enunciadoparcial = título.getText();
           enunciadoparcial += "\n"+ enunciado.getText();
          enunciadoparcial  += "\n " + pergunta.getText();
             questao.setEnunciado(enunciadoparcial);
          questao.setGabarito(gabarito.getText()); 
          questao.setDisciplina(this.disciplina);
-         
+
          QuestaoBO questaobo= new QuestaoBO();
-            questaobo.cadastrar(questao);
-         FileOutputStream out =null;
-        XWPFDocument document = new XWPFDocument();
-        String nomearquivo ="Questão" + questao.getCodigo() + ".docx";
-        try {
-            out = new FileOutputStream(new File(nomearquivo));
-            XWPFParagraph paragraph = document.createParagraph();
-            paragraph.setAlignment(ParagraphAlignment.CENTER);
-            XWPFRun run = paragraph.createRun();
-            run.setText(titulo.getText());
-            run.setBold(true);
+         questaobo.cadastrar(questao);
+      FileOutputStream out =null;
+     XWPFDocument document = new XWPFDocument();
+     System.out.println(questao.getCodigo());
+     String nomearquivo ="Questão" + questao.getCodigo() + ".docx";
+     try {
+         out = new FileOutputStream(new File(nomearquivo));
+         XWPFParagraph paragraph = document.createParagraph();
+         paragraph.setAlignment(ParagraphAlignment.CENTER);
+         XWPFRun run = paragraph.createRun();
+         run.setText(título.getText());
+         run.setBold(true);
 
-            run.addBreak();
-            run.addBreak();
-            XWPFParagraph paragraph2 = document.createParagraph();
-            paragraph2.setAlignment(ParagraphAlignment.BOTH);
-            XWPFRun run2 = paragraph2.createRun();
-            run2.addTab();
-            run2.setText(enunciado.getText());
-            run2.addBreak();
-             XWPFParagraph paragraph3 = document.createParagraph();
-             paragraph3.setAlignment(ParagraphAlignment.BOTH);
-            XWPFRun run3 = paragraph3.createRun();
-            run3.addTab();
-            run3.setText(pergunta.getText());
-            run3.addBreak();
-            run3.addBreak();
+         run.addBreak();
+         run.addBreak();
+         XWPFParagraph paragraph2 = document.createParagraph();
+         paragraph2.setAlignment(ParagraphAlignment.BOTH);
+         XWPFRun run2 = paragraph2.createRun();
+         run2.addTab();
+         run2.setText(enunciado.getText());
+         run2.addBreak();
+          XWPFParagraph paragraph3 = document.createParagraph();
+          paragraph3.setAlignment(ParagraphAlignment.BOTH);
+         XWPFRun run3 = paragraph3.createRun();
+         run3.addTab();
+         run3.setText(pergunta.getText());
+         run3.addBreak();
+         run3.addBreak();
 
-            document.write(out);
-            out.close();
-            document.close();
+         document.write(out);
+         out.close();
+         document.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } 
-        
-
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+     } catch (FileNotFoundException e) {
+         e.printStackTrace();
+     } 
+         
+   
+    	//ao terminar de inserir a nova questão, volta para a tela anterior!
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
     	primaryStage.close(); //fecha a tela atual para abrir a nova!
     	TelaQuestao retornar = new TelaQuestao();
     	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
-
-
+    	
     }
     
-   
-
     @FXML
-    void telaanterior(MouseEvent event) throws IOException {
-        	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
-    	primaryStage.close(); //fecha a tela atual para abrir a nova!
-    	TelaQuestao retornar = new TelaQuestao();
-    	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
-    }
-		
-	
-    @FXML
-    void editarquestao(ActionEvent event) throws IOException, UpdateDisciplineEX {
-        Questao questao = new Questao();
-    	if(niveldificuldade.getText()=="fácil"){
-            questao.setNivelDeDificuldade(1);
-        }else if(niveldificuldade.getText()=="médio"){
-            questao.setNivelDeDificuldade(2);
-        }else if(niveldificuldade.getText()=="difícil"){
-            questao.setNivelDeDificuldade(3);
+	void editarquestao(ActionEvent event) throws InsertEX, IOException, UpdateDisciplineEX {
+    	QuestaoBO questaobo= new QuestaoBO();
+    	Questao novaQuestao = new Questao();
+    	novaQuestao.setCodigo(getCodigoQuestao());
+        if (niveldificuldade.getText().equals("fácil")) {
+            novaQuestao.setNivelDeDificuldade(1);
+        } else if (niveldificuldade.getText().equals("médio")) {
+            novaQuestao.setNivelDeDificuldade(2);
+        } else if (niveldificuldade.getText().equals("difícil")) {
+            novaQuestao.setNivelDeDificuldade(3);
         }
-        questao.setAssunto(assunto.getText());
-         String enunciadoparcial = titulo.getText();
-          enunciadoparcial += "\n"+ enunciado.getText();
-         enunciadoparcial  += "\n " + pergunta.getText();
-            questao.setEnunciado(enunciadoparcial);
-         questao.setGabarito(gabarito.getText()); 
-         questao.setDisciplina(this.disciplina);
-         questao.setCodigo(getCodigoQuestao());
-         QuestaoBO questaobo= new QuestaoBO();
-            questaobo.alterarQuestao(questao);
+    	novaQuestao.setDisciplina(this.disciplina);
+    	novaQuestao.setAssunto(assunto.getText()); 
+    	novaQuestao.setEnunciado(enunciado.getText());
+    	novaQuestao.setGabarito(gabarito.getText());
+    	questaobo.alterarQuestao(novaQuestao);
     	
     	//ao terminar de alterar a nova questão, volta para a tela anterior!
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
@@ -181,8 +174,13 @@ public class ControllerNovaQuestao {
     	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
 	}
 
-	
-	
+    @FXML
+    void telaanterior(MouseEvent event) throws IOException {//NÃO FEITO
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); //pega a tela atual como referencia
+    	primaryStage.close(); //fecha a tela atual para abrir a nova!
+    	TelaQuestao retornar = new TelaQuestao();
+    	retornar.start(new Stage(), this.disciplina, nomeusuario.getText());
+    }
 
 	public void preencherNome(String nomeUsuario) { //preenche o nome do usuário
 		this.nomeusuario.setText(nomeUsuario);
@@ -197,6 +195,14 @@ public class ControllerNovaQuestao {
 		this.questao.setText("Codigo: " + Codigo);
 	}
 
+	public Button getAdicionar() {
+		return adicionar;
+	}
+
+	public void setAdicionar(Button adicionar) {
+		this.adicionar = adicionar;
+	}
+
 	public Button getEditar() {
 		return editar;
 	}
@@ -207,8 +213,5 @@ public class ControllerNovaQuestao {
 
 	public void setCodigoQuestao(int codigoQuestao) {
 		this.codigoQuestao = codigoQuestao;
-	}
-    public Button getAdicionar() {
-		return adicionar;
 	}
 }

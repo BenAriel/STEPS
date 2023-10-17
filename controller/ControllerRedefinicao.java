@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import BO.MonitorBO;
 import connection.MonitorDAO;
 import entities.Monitor;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class ControllerRedefinicao {
     private ImageView voltar;//feito
 
     @FXML
-    void redefinicao(ActionEvent event) { //vai redefinir os valores e depois vai retornar para a tela principal
+    void redefinicao(ActionEvent event) throws Exception { //vai redefinir os valores e depois vai retornar para a tela principal
     	if( repetirsenha.getText().equals(novasenha.getText())){
     		System.out.println("Senhas iguais, iniciado redefinição!");
     		Monitor redefinicaoMonitor = new Monitor();
@@ -47,8 +48,8 @@ public class ControllerRedefinicao {
     		redefinicaoMonitor.setLogin(login.getText());
     		redefinicaoMonitor.setMatricula(matricula.getText());
     		redefinicaoMonitor.setSenha(novasenha.getText());
-    		MonitorDAO redefinidorMonitor = new MonitorDAO();
-    		redefinidorMonitor.alterar(redefinicaoMonitor); //vai mandar alterar o monitor que tiver matrícula igual!
+    		MonitorBO redefinidorMonitor = new MonitorBO();
+    		redefinidorMonitor.alterarMonitor(redefinicaoMonitor); //vai mandar alterar o monitor que tiver matrícula igual!
     		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // pega referencia da
     		// atual janela
         	primaryStage.close(); // fecha a atual janela

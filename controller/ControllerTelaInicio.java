@@ -23,6 +23,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import BO.DisciplinaBO;
+import Exception.DeleteEX;
+import Exception.ListEX;
 import connection.DisciplinaDAO;
 public class ControllerTelaInicio implements Initializable {
 
@@ -75,9 +78,9 @@ public class ControllerTelaInicio implements Initializable {
     }
  
     @FXML
-    void apagardisciplina(ActionEvent event) {
-    	DisciplinaDAO apagarDisciplina = new DisciplinaDAO();
-    	apagarDisciplina.remover(disciplinaSelecionada);
+    void apagardisciplina(ActionEvent event) throws ListEX, DeleteEX {
+    	DisciplinaBO apagarDisciplina = new DisciplinaBO();
+    	apagarDisciplina.removerDisciplina(disciplinaSelecionada);
     	atualizarDados();
     }
 
@@ -136,7 +139,12 @@ public class ControllerTelaInicio implements Initializable {
         nome.setCellValueFactory(new PropertyValueFactory<Disciplina,String>("nome"));
         descricao.setCellValueFactory(new PropertyValueFactory<Disciplina,String>("descricao"));
         codigo.setCellValueFactory(new PropertyValueFactory<Disciplina,Integer>("codigo"));
-        atualizarDados();
+        try {
+            atualizarDados();
+        } catch (ListEX e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     private void initializeNodes() {
@@ -145,10 +153,10 @@ public class ControllerTelaInicio implements Initializable {
 		descricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));		
 	}
     
-    public void atualizarDados() {
+    public void atualizarDados() throws ListEX {
     	
-        DisciplinaDAO discDAO = new DisciplinaDAO();
-        retornoListar = discDAO.listar();
+        DisciplinaBO disc = new DisciplinaBO();
+        retornoListar = disc.listar();
     	disciplinas = FXCollections.observableArrayList(retornoListar);
     	table.setItems(disciplinas);
     }

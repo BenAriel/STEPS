@@ -46,17 +46,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="249.0" layoutY="83.0" text="(">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="254.0" layoutY="87.0" text=" codigo" />
-      <Label layoutX="296.0" layoutY="83.0" text=")">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="120.0" fitWidth="228.0" layoutX="71.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagens/Rectangle%2024.png" />
@@ -107,7 +96,7 @@
             <Image url="@imagens/dices%201.png" />
          </image>
       </ImageView>
-      <Button fx:id="gerarprovas" layoutX="222.0" layoutY="294.0" mnemonicParsing="false" onAction="#gerarprovas" prefHeight="68.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Gere provas aleatórias definindo o número de questões, assunto e dificuldade" wrapText="true">
+      <Button fx:id="abrirgeraradorprovas" layoutX="222.0" layoutY="294.0" mnemonicParsing="false" onAction="#gerarprovas" prefHeight="68.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Gere provas aleatórias definindo o número de questões, assunto e dificuldade" wrapText="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

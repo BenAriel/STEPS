@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import BO.QuestaoBO;
+import Exception.DeleteEX;
 import connection.QuestaoDAO;
 
 public class ControllerQuestao implements Initializable {
@@ -99,9 +102,9 @@ public class ControllerQuestao implements Initializable {
     }
 
 	@FXML
-	void apagarquestao(ActionEvent event) {
-		QuestaoDAO apagarQuestao = new QuestaoDAO();
-    	apagarQuestao.remover(questaoSelecionada);
+	void apagarquestao(ActionEvent event) throws DeleteEX {
+		QuestaoBO apagarQuestao = new QuestaoBO();
+    	apagarQuestao.removerQuestao(questaoSelecionada);
     	atualizarDados();
 	}
 

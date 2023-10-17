@@ -23,6 +23,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import BO.ProvaBO;
+import Exception.ListEX;
 import connection.ProvaDAO;
 public class ControllerProva implements Initializable{
 
@@ -170,13 +173,18 @@ public class ControllerProva implements Initializable{
  		numeroquestoes.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("numeroDeQuestoes"));
  	    codigo.setCellValueFactory(new PropertyValueFactory<Prova, Integer>("codigo")); // Adicione esta linha
  	    data.setCellValueFactory(new PropertyValueFactory<Prova, LocalDate>("data"));
- 	    atualizarDados();
+ 	    try {
+			atualizarDados();
+		} catch (ListEX e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
-    public void atualizarDados() {
+    public void atualizarDados() throws ListEX {
 
-		ProvaDAO discDAO = new ProvaDAO();
-		retornoListar = discDAO.listar();
+		ProvaBO provaBO = new ProvaBO();
+		retornoListar = provaBO.listar();
 		System.out.println(disciplina.getText() + "Foi esse aqui que você mandou inicializar!");
 		for (Prova questao : retornoListar) {
 			System.out.println(questao.toString());
@@ -190,7 +198,7 @@ public class ControllerProva implements Initializable{
 		table.setItems(provaObservable);
 	}
     
-    public void preencherDisciplina(String nomeDisciplina) {
+    public void preencherDisciplina(String nomeDisciplina) throws ListEX {
 		this.disciplina.setText(nomeDisciplina);
 		System.out.println(disciplina.getText());
 		initializeNodes();

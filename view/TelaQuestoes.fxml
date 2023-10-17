@@ -27,14 +27,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="disciplina" layoutX="198.0" layoutY="17.0" text="Disciplina X">
+      <Label fx:id="disciplina" layoutX="92.0" layoutY="10.0" text="Disciplina X">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="286.0" layoutY="17.0" text=" : Lista de Questões">
+      <Label layoutX="259.0" layoutY="30.0" text="Lista de Questões">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <ImageView fx:id="voltar" fitHeight="40.0" fitWidth="40.0" layoutX="40.0" layoutY="10.0" onMouseClicked="#telaanterior" pickOnBounds="true" preserveRatio="true">
@@ -76,12 +76,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TableView fx:id="table" layoutX="85.0" layoutY="94.0" prefHeight="239.0" prefWidth="507.0">
+      <TableView fx:id="table" layoutX="78.0" layoutY="81.0" prefHeight="239.0" prefWidth="498.0">
          <columns>
             <TableColumn fx:id="codigo" prefWidth="50.0" text="Código" />
-            <TableColumn fx:id="dificuldade" minWidth="3.0" prefWidth="72.0" text="Dificuldade" />
-            <TableColumn fx:id="assunto" prefWidth="150.0" text="Assunto" />
-            <TableColumn fx:id="enunciado" prefWidth="226.0" text="Enunciado" />
+            <TableColumn fx:id="dificuldade" minWidth="3.0" prefWidth="78.0" text="Dificuldade" />
+            <TableColumn fx:id="assunto" prefWidth="70.0" text="Assunto" />
+            <TableColumn fx:id="enunciado" prefWidth="98.0" text="Enunciado" />
+            <TableColumn fx:id="disciplinaQuestao" prefWidth="106.0" text="Disciplina" />
+            <TableColumn fx:id="gabarito" prefWidth="120.0" text="Gabarito" />
          </columns>
       </TableView>
       <Button fx:id="editar" layoutX="80.0" layoutY="346.0" mnemonicParsing="false" onAction="#editarquestao" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 8; -fx-background-color: #238700;" text="Editar Questão" textFill="WHITE" visible="false">
@@ -115,6 +117,6 @@
          </image>
       </ImageView>
       <Label layoutX="95.0" layoutY="66.0" text="Buscar Questão" />
-      <Label fx:id="nomeusuario" layoutX="286.0" layoutY="42.0" text="nomeusuario" />
+      <Label fx:id="nomeusuario" layoutX="92.0" layoutY="32.0" text="nomeusuario" />
    </children>
 </Pane>
